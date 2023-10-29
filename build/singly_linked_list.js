@@ -60,12 +60,12 @@ class DoublyLinkedList {
     }
     remove(value) {
         let curr = this.head;
-        for (let i = 0; i < this.length; i++) {
-            curr = curr.next;
+        for (let i = 0; curr && i < this.length; i++) {
             if (curr.value === value) {
                 break;
             }
             else {
+                curr = curr.next;
                 continue;
             }
         }
@@ -78,24 +78,35 @@ class DoublyLinkedList {
             this.head = this.tail = undefined;
             return out;
         }
-        curr.prev = curr.next;
-        curr.next = curr.prev;
+        if (curr.next) {
+            curr.next.prev = curr.prev;
+        }
+        if (curr.prev) {
+            curr.prev.next = curr.next;
+        }
         if (this.head === curr) {
             this.head = curr.next;
         }
         if (this.tail === curr) {
-            this.tail = curr.next;
+            this.tail = curr.prev;
         }
         curr.prev = curr.next = undefined;
+        return curr.value;
     }
     getAt(index) {
+        if (index > this.length) {
+            return;
+        }
         let curr = this.head;
         for (let i = 0; i < index; i++) {
             curr = curr.next;
         }
-        return curr.value;
+        return curr === null || curr === void 0 ? void 0 : curr.value;
     }
     removeAt(index) {
+        if (index > this.length) {
+            return;
+        }
         let curr = this.head;
         for (let i = 0; i < index; i++) {
             curr = curr.next;
@@ -120,20 +131,14 @@ class DoublyLinkedList {
         curr.prev = curr.next = undefined;
     }
     debug() {
+        var _a, _b;
         let curr = this.head;
         let list = "";
         for (let i = 0; i < this.length; i++) {
-            console.log("i: " + i, curr.value);
-            let arrow = "";
-            if (curr.prev) {
-                arrow += curr.prev.value + "<";
-            }
-            arrow += "-----";
-            if (curr.next) {
-                arrow += ">" + curr.next.value;
-            }
-            // console.log("Node=> ", arrow);
-            list += " " + arrow;
+            console.log("length: ", this.length);
+            // console.log(curr);
+            let row = `|v:${curr.value}, n:${(_a = curr.next) === null || _a === void 0 ? void 0 : _a.value}, p:${(_b = curr.prev) === null || _b === void 0 ? void 0 : _b.value}|`;
+            list += " " + row;
             curr = curr.next;
         }
         console.log("Task completed: ", list);
@@ -147,3 +152,17 @@ a.append(3);
 a.append(4);
 a.append(5);
 a.debug();
+a.insertAt(9, 3);
+a.debug();
+a.remove(100);
+a.debug();
+a.remove(9);
+a.debug();
+a.removeAt(0);
+a.debug();
+a.removeAt(1000);
+a.debug();
+console.log("getAt 5: ", a.getAt(5));
+console.log("getAt 2: ", a.getAt(2));
+console.log("getAt 4: ", a.getAt(4));
+console.log("getAt 3: ", a.getAt(3));
