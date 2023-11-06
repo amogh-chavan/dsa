@@ -83,20 +83,52 @@ function post_order_walk(curr: BinaryNode<number>, path: number[]): number[] {
   return path;
 }
 
+function dsf_walk(head: BinaryNode<number>, needle: number): boolean {
+  const q: BinaryNode<number>[] = [];
+  q.push(head);
+
+  while (q.length) {
+    const curr = q.shift();
+
+    if (!curr) {
+      continue;
+    }
+
+    if (curr.value === needle) {
+      return true;
+    }
+
+    if (curr.left) {
+      q.push(curr.left);
+    }
+
+    if (curr.right) {
+      q.push(curr.right);
+    }
+  }
+
+  return false;
+}
+
 function binary_tree_traversal(head: BinaryNode<number>) {
   const pre_result = pre_order_walk(head, []);
   const in_result = in_order_walk(head, []);
   const post_result = post_order_walk(head, []);
+  const dsf_result = dsf_walk(head, 3);
   console.log("Result", {
     pre_result,
     in_result,
     post_result,
+    dsf_result,
   });
   if (
-    JSON.stringify(pre_result) !== JSON.stringify([5, 1, 3, 4, 2, 8, 21]) ||
-    JSON.stringify(in_result) !== JSON.stringify([3, 1, 4, 5, 8, 2, 21]) ||
-    JSON.stringify(post_result) !== JSON.stringify([3, 4, 1, 8, 21, 2, 5])
+    JSON.stringify(pre_result) === JSON.stringify([5, 1, 3, 4, 2, 8, 21]) &&
+    JSON.stringify(in_result) === JSON.stringify([3, 1, 4, 5, 8, 2, 21]) &&
+    JSON.stringify(post_result) === JSON.stringify([3, 4, 1, 8, 21, 2, 5]) &&
+    dsf_result === true
   ) {
+    return;
+  } else {
     throw "Traversal failed";
   }
   return;
