@@ -1,6 +1,6 @@
 const pyramid_levels = 5;
 
-for (let i = 1; i <= pyramid_levels; i++) {
+for (let i = pyramid_levels; i > 0; i--) {
   let current_row_spaces = "";
   let current_row_stars = "";
 
@@ -11,15 +11,7 @@ for (let i = 1; i <= pyramid_levels; i++) {
     current_row_spaces += " ";
   }
   for (let st = 0; st < current_row_stars_count; st++) {
-    if (i === 1 || i === pyramid_levels) {
-      current_row_stars += "*";
-    } else {
-      if (st === 0 || st === current_row_stars_count - 1) {
-        current_row_stars += "*";
-      } else {
-        current_row_stars += " ";
-      }
-    }
+    current_row_stars += "*";
   }
   console.log(current_row_spaces + current_row_stars + current_row_spaces);
 }
@@ -27,10 +19,10 @@ for (let i = 1; i <= pyramid_levels; i++) {
 /**
  * Output:
 
-    *    
-   * *   
-  *   *  
- *     * 
 *********
+ *******
+  *****
+   ***
+    *
 
  */

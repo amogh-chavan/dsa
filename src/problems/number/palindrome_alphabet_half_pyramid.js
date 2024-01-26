@@ -16,11 +16,11 @@ for(let i=1;i<=levels;i++){
     console.log(left_tree + String.fromCharCode(start_char + i - 1) +" "+ right_tree)
 }
 /**
- * output 
- *  
-A 
-A B A 
-A B C B A 
-A B C D C B A 
-A B C D E D C B A 
+ * output
+ *
+A
+A B A
+A B C B A
+A B C D C B A
+A B C D E D C B A
 */
