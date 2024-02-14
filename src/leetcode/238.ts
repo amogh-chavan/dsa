@@ -25,3 +25,13 @@ function productExceptSelf(nums: number[]): number[] {
 }
 
 console.log(productExceptSelf([-1, 1, 0, -3, 3]));
+
+/**
+ * basically we first push left production for num and then in
+ * second loop we multiple right product with left product which
+ * is already in result array
+ *
+ * the reason for checking -0 is javascript considers
+ * -0 as negative infinity
+ * +0 as positive infinity
+ */
