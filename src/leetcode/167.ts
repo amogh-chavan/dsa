@@ -1,4 +1,4 @@
-function twoSum(numbers: number[], target: number): number[] {
+function twoSum2(numbers: number[], target: number): number[] {
   let i = 0;
   let j = numbers.length - 1;
 
@@ -24,4 +24,4 @@ function twoSum(numbers: number[], target: number): number[] {
   return [i + 1, j + 1];
 }
 
-console.log(twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8));
+console.log(twoSum2([1, 2, 3, 4, 4, 9, 56, 90], 8));
