@@ -14,3 +14,10 @@ function twoSum(nums: number[], target: number): number[] {
 }
 
 console.log(twoSum([2, 7, 11, 15], 9));
+
+/**
+ * In two sum we will store difference of each number from target in a hashmap
+ * since question says there will be alway of combination of answer
+ * different stored in hashmap will be a value somewhere in array
+ * when you store difference in hashmap also store the index of orignal value
+ */
