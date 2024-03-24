@@ -3,7 +3,8 @@
     "target": "es5",
     "module": "commonjs",
     "strict": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "downlevelIteration": true
   },
   // "include": ["src/**/**/*.ts", "src/**/*.ts", "src/*.ts"],
   "exclude": ["node_modules"]
