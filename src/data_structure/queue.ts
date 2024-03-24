@@ -3,7 +3,7 @@ type QNode<T> = {
   next?: QNode<T>;
 };
 
-class Queue<T> {
+export class Queue<T> {
   private length: number;
   private head: QNode<T>;
   private tail: QNode<T>;
@@ -41,14 +41,14 @@ class Queue<T> {
   dequeue() {
     const out = this.head;
 
-    if (this.length === 0) {
-      return;
-    } else {
-      this.head = this.head.next;
+    if (!out) {
+      return undefined;
     }
 
-    if (this.length === 0) {
-      this.tail = undefined;
+    if (this.length === 1) {
+      this.head = this.tail = undefined;
+    } else {
+      this.head = this.head.next;
     }
 
     this.length--;
