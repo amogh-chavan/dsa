@@ -134,7 +134,7 @@ class HashTable<T> {
     for (let i = 0; i < key.length; i++) {
       hash += key.charCodeAt(i);
     }
-    const i = hash % this.size || 1;
+    const i = hash % this.capacity;
 
     return i;
   }
