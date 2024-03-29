@@ -1,4 +1,4 @@
-interface BinaryNode<T> {
+export interface BinaryNode<T> {
   value: T;
   left: BinaryNode<T> | null;
   right: BinaryNode<T> | null;
@@ -10,7 +10,7 @@ interface BinaryNode<T> {
  * 3 4     8 21
  */
 
-const tree: BinaryNode<number> = {
+export const tree: BinaryNode<number> = {
   value: 5,
   left: {
     value: 1,
